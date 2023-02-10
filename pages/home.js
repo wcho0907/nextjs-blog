@@ -43,14 +43,21 @@ const[reactData, setReactData] = useState([]);
   )
 }
 
+// export async function getServerSideProps({params,req,res,query,preview,previewData,resolvedUrl,locale,locales,defaultLocale}) {
+//     if (query.text) {
+//       return { redirect: { destination: '/post', permanent: false, },}
+//     }
+//     const data = await fetch('https://jsonplaceholder.typicode.com/users');
+//     const users = await data.json();
+//     if (!data) {
+//     return {notFound: true,}
+//     }  
+//     return { props: { users } }
+// }
+
 export async function getServerSideProps({params,req,res,query,preview,previewData,resolvedUrl,locale,locales,defaultLocale}) {
-    if (query.text) {
-      return { redirect: { destination: '/post', permanent: false, },}
-    }
+    console.log('Logging : '+res);
     const data = await fetch('https://jsonplaceholder.typicode.com/users');
     const users = await data.json();
-    if (!data) {
-    return {notFound: true,}
-    }  
     return { props: { users } }
-}
+  }

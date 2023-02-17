@@ -7,8 +7,6 @@ const Post = () => {
   //http://localhost:3000/posts/123?abc=456
   const { id,abc } = router.query;
 
-
-  
   return <div>
             Post: {id} {abc}
             <li>

@@ -14,11 +14,11 @@ const Post = () => {
             <li>
             <Link legacyBehavior
               href={{
-                pathname: "/posts/[postId]",
-                query: { postId: "123" },
+                pathname: "/posts/[id]",
+                query: { id: "123" },
               }}
             >
-              <a>切換至 pages/posts/[postId].tsx</a>
+              <a>切換至 pages/posts/[id].js</a>
             </Link>
             </li>
             <li>
@@ -28,7 +28,7 @@ const Post = () => {
                 query: { date: ["2021", "12", "31"] },
               }}
             >
-              <a>切換至 pages/posts/[...date].tsx</a>
+              <a>切換至 pages/posts/[...date].js</a>
             </Link>
             </li>
          </div>;

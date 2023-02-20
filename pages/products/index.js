@@ -7,7 +7,7 @@ const Home = () => {
 
   const style = {
     width: 120,
-    height: 167,
+    height: 170,
     position: 'relative',
   };
   
@@ -17,11 +17,15 @@ const Home = () => {
       <div>
         {products.map((product) => (
           <>
-          <div style={style}> 
-            <Image src={product.image} alt="product" layout="fill" objectFit="cover" />
-                <Link legacyBehavior href={`/product/${product.id}`} passHref>
+          <div> 
+            <div style={style}>
+                <Image src={product.image} alt="product" layout="fill" objectFit="cover" />
+            </div>
+            <div>
+                <Link legacyBehavior href={`/products/${product.id}`} passHref>
                     <a>{product.title}</a>
                 </Link>
+            </div>
           </div>
           <span>{product.price}</span><br/>
           </>

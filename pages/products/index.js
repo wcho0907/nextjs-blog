@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
 import { sortByPrice, getAllProduct } from "../fake-data";
@@ -6,10 +7,20 @@ import { sortByPrice, getAllProduct } from "../fake-data";
 const Home = () => {
   const [direction, setDirection] = useState("ASC");
   const products = sortByPrice(direction);
+  const router = useRouter();
   
   const handleSortingDirectionChange = (e) => {
-    setDirection(e.target.value);
-  };    
+    const dir = e.target.value;
+    router.push(`${router.pathname}?direction=${dir}`, undefined, {
+      shallow: true,
+    });
+  };  
+  
+  useEffect(() => {
+    if (router.query.direction) {
+      setDirection(router.query.direction);
+    }
+  }, [router.query.direction]);
 
   const style = {
     width: 120,

@@ -46,5 +46,5 @@
   
   export function getProductById(id) {
     const product = FAKE_PRODUCT_DATA.find((product) => product.id === id);
-    return product || FAKE_PRODUCT_DATA[0];
+    return product || { title: "No data"}
   }

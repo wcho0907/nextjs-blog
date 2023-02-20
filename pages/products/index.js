@@ -1,9 +1,15 @@
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { getAllProduct } from "../fake-data";
+import { sortByPrice, getAllProduct } from "../fake-data";
 
 const Home = () => {
-  const products = getAllProduct();
+  const [direction, setDirection] = useState("ASC");
+  const products = sortByPrice(direction);
+  
+  const handleSortingDirectionChange = (e) => {
+    setDirection(e.target.value);
+  };    
 
   const style = {
     width: 120,
@@ -14,6 +20,13 @@ const Home = () => {
   return (
     <>
       <div>商品列表</div>
+      <div>
+        Price:
+            <select value={direction} onChange={handleSortingDirectionChange}>
+            <option value="ASC">價格由低到高</option>
+            <option value="DES">價格由高到低</option>
+            </select>
+      </div>
       <div>
         {products.map((product) => (
           <>
